@@ -1,0 +1,20 @@
+[
+    {
+      "title": "Complete Project Proposal",
+      "description": "Draft and submit the project proposal to the team for review.",
+      "deadline": "2023-01-15T17:00:00",
+      "priority": "high"
+    },
+    {
+      "title": "Prepare Presentation Slides",
+      "description": "Create slides for the upcoming client presentation.",
+      "deadline": "2023-01-20T10:30:00",
+      "priority": "moderate"
+    },
+    {
+      "title": "Review Code Changes",
+      "description": "Review and provide feedback on the latest code changes in the development branch.",
+      "deadline": "2023-01-18T15:45:00",
+      "priority": "low"
+    }
+  ]

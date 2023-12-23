@@ -1,11 +1,21 @@
+import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../Provider/AuthProvider";
+import { toast } from "react-hot-toast";
 
 const Navbar = () => {
+  const {user,logout} = useContext(AuthContext)
+  const handellogOut=()=>{
+    logout()
+    toast.success("Log Out successfully")
+  }
     const navlinks=
         <>
-         <navlinks to="/"><li><a>Home</a></li></navlinks>
+        <NavLink to="/"><li><a>Home</a></li></NavLink>
         <li><a>Learn</a></li>
-        <li><a> Soliution</a></li></>
-       
+        <li><a> Soliution</a></li>
+      <NavLink to="/deshboard/everything" ><li><a>Deshboard</a></li></NavLink>
+       </>
     return (
         <div>
             <div className="navbar">
@@ -27,11 +37,38 @@ const Navbar = () => {
       </ul>
       
   </div>
-  <div className="navbar-end">
-    <a className="btn">Login</a>
-  </div>
+  <div className="navbar-end px-6">
+  {
+  user? <>
+   <div className="dropdown dropdown-end">
+  <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+    <div className="w-10 rounded-full">
+      <img  src={user?.photoURL? user.photoURL : "None"} />
+    </div>
+  </label>
+  <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-gray-500 rounded-box w-52 text-white font-bold">
+    <li>
+      <a className="justify-between">
+        {
+          user?.displayName? user.displayName :"Your Name"
+        }
+      </a>
+    </li>
+    <li><a>Settings</a></li>
+    <li onClick={handellogOut} ><a>Logout</a></li>
+  </ul>
 </div>
-        </div>
+</>
+      :
+      <Link to="/login">
+    <Link to="/login"> <button className="btn bg-gray-200 ">Login</button></Link>
+    </Link>
+    }
+      </div>
+    
+    </div>
+  </div>
+
     );
 };
 
