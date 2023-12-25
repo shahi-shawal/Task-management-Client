@@ -16,7 +16,7 @@ const Deshnavbar = () => {
         <div className="text-black">
              <div>
       <div className="flex  lg:fixed">
-        <div className="lg:w-80 lg:min-h-screen px-2 bg-gray-100">
+        <div className="w-full lg:w-80 lg:min-h-screen px-2 bg-gray-100">
           <img src="" className=" mb-5 mt-5 mx-auto" alt="" />
           <div className="flex justify-center items-center gap-5">
             <div>

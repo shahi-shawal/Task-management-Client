@@ -1,22 +1,23 @@
-import { useQuery } from "@tanstack/react-query";
+
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../../../Provider/AuthProvider";
 
 
 const Action = () => {
-    
+    const {user} = useContext(AuthContext)
     const [alltask, setTask] = useState([])
 
      useEffect(()=>{
-        fetch('https://task-server-navy-ten.vercel.app/task')
+        fetch(`https://task-server-navy-ten.vercel.app/task/${user.email}`)
     .then(res=>res.json())
     .then(data=>{
         console.log(data);
         setTask(data)
     })
-     },[alltask])
+     },[])
 
     const handelUpdate=(item)=>{
         console.log(item);

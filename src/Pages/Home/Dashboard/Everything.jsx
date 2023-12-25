@@ -6,7 +6,7 @@ import Todo from "./Tasklist/Todo";
 const Everything = () => {
     return (
         <div className="text-black">
-            <div className="flex gap-5 mt-10">
+            <div className="flex flex-col lg:flex-row gap-5 mt-10">
             <Todo></Todo>
             <Ongoing></Ongoing>
             <Complete></Complete>

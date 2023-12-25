@@ -1,51 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
-import { MdDelete, MdEdit } from "react-icons/md";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
-import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../../../Provider/AuthProvider";
 
 const Todo = () => {
+    const {user} = useContext(AuthContext)
     const axiosPublic = useAxiosPublic()
     const {data: todo=[], refetch} = useQuery({
        queryKey:["todo"],
        queryFn:async()=>{
-        const res = await axiosPublic.get("/task")
+        const res = await axiosPublic.get(`/task/${user.email}`)
         return res.data
        }
 
     })
+   
     console.log(todo);
-
-    // const handelDelete=(id)=>{
-    //     console.log(id);
-    //     Swal.fire({
-    //       title: "Are you sure?",
-    //       text: "You won't be able to revert this!",
-    //       icon: "warning",
-    //       showCancelButton: true,
-    //       confirmButtonColor: "#3085d6",
-    //       cancelButtonColor: "#d33",
-    //       confirmButtonText: "Yes, delete it!"
-    //     }).then((result) => {
-    //       if (result.isConfirmed) {
-          
-    //       axiosPublic.delete(`/task/${id}`)
-    //       .then(res=> {
-    //           console.log(res.data);
-    //           if (res.data.deletedCount > 0) {
-    //               refetch()
-    //               Swal.fire({
-    //           title: "Deleted!",
-    //           text: "Your file has been deleted.",
-    //           icon: "success"
-    //         });  
-            
-    //           }
-    //       })
-    //       }
-    //     });
-    //     }
-    
                 
     
     return (
