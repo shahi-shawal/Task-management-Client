@@ -1,13 +1,15 @@
 import { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { toast } from "react-hot-toast";
 
 const Navbar = () => {
   const {user,logout} = useContext(AuthContext)
+  const navigate = useNavigate()
   const handellogOut=()=>{
     logout()
     toast.success("Log Out successfully")
+    navigate("/")
   }
     const navlinks=
         <>

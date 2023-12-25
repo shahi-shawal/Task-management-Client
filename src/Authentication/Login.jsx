@@ -31,7 +31,7 @@ const Login = () => {
     login(email,password)
     .then(result=>{
         console.log(result.user);
-        navigate(location?.state? location.state :"/")
+        navigate(location?.state? location.state :"/deshboard/everything")
          toast.success("Log in successfully")
          return
     })
@@ -45,7 +45,7 @@ const Login = () => {
 
   const handelGooglelog=()=>{
     googlelogin()
-    navigate(location?.state? location.state :"/")
+    navigate(location?.state? location.state :"/deshboard/everything")
     toast.success("Log in successfully")
     return
    }

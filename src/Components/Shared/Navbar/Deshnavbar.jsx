@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { IoBackspaceOutline,  IoCreateOutline, IoHomeOutline, IoStopOutline } from "react-icons/io5";
 import { PiGraph } from "react-icons/pi";
 import { useContext } from "react";
@@ -6,9 +6,11 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 import { toast } from "react-hot-toast";
 const Deshnavbar = () => {
   const {user,logout} = useContext(AuthContext)
+  const navigate = useNavigate()
   const handellogOut=()=>{
     logout()
     toast.success("Log Out successfully")
+    navigate("/")
   }
     return (
         <div className="text-black">
@@ -26,7 +28,7 @@ const Deshnavbar = () => {
             </div>
           </div>
           <div className="text-start px-4">
-            <ul className=" flex flex-col gap-4 font-semibold menu-horizontal mt-6 gap-1">
+            <ul className="menu flex flex-col gap-4 font-semibold menu-horizontal mt-6 gap-1">
               <li className="">
                 <NavLink to="/" className="flex items-center gap-2">
                   <IoHomeOutline size={26} className="text-black" /> Home
@@ -38,12 +40,12 @@ const Deshnavbar = () => {
                 </NavLink>
                 </li>
               <li className="">
-                <NavLink className="flex items-center gap-2">
+                <NavLink to="createtask" className="flex items-center gap-2">
                   <IoCreateOutline size={26} className="text-black" />Create Task
                 </NavLink>
                 </li>
               <li className="">
-                <NavLink className="flex items-center gap-2">
+                <NavLink to="previoustask" className="flex items-center gap-2">
                   <IoBackspaceOutline size={26} className="text-black" />Previous Task
                 </NavLink>
                 </li>

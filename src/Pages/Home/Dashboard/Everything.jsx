@@ -1,13 +1,15 @@
+import Complete from "./Tasklist/Complete";
+import Ongoing from "./Tasklist/Ongoing";
 import Todo from "./Tasklist/Todo";
 
 
 const Everything = () => {
     return (
         <div className="text-black">
-            <div className="flex gap-5">
+            <div className="flex gap-5 mt-10">
             <Todo></Todo>
-            <h1>Ongoinglist</h1>
-            <h1>Complete</h1>
+            <Ongoing></Ongoing>
+            <Complete></Complete>
             </div>
         </div>
     );
